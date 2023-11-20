@@ -24,7 +24,11 @@ class Player:
         self.ships = []
         self.search = ["U" for i in range(100)]
         self.place_ships(sizes = [5, 4, 3, 3, 2])
-        self.indexes
+        self.indexes = []
+        #get our indexes in one neat list
+        for ship in self.ships:
+            for i in ship.indexes:
+                self.indexes.append(i)
 
     def place_ships(self, sizes):
         #for each ship in our list, randomly place it on the board
@@ -48,9 +52,34 @@ class Player:
                         if i in otherShip.indexes:
                             possible = False
                             break
-                    #if its possible, lets place the ship then
-                    if possible == True:
-                        self.ships.append(ship)
-                        placed = True
+                #if its possible, lets place the ship then
+                if possible == True:
+                    self.ships.append(ship)
+                    placed = True
 
-p = Player()
+class Game:
+    def __init__(self):
+        self.player1 = Player()
+        self.player2 = Player()
+        self.player1Turn = True
+        self.gameOver = False
+    
+    def makeMove(self, i):
+        player = self.player1 if self.player1Turn == True else self.player2
+        opponent = self.player1 if self.player1Turn == False else self.player2
+
+        #if i is a ship
+        if i in opponent.indexes:
+            player.search[i] = "H"
+            #check if the ship has been sunk
+            for ship in opponent.ships:
+                sunk = True
+                for index in ship.indexes:
+                    if player.search[index] == "U":
+                        sunk = False
+                if sunk:
+                    for index in ship.indexes:
+                        player.search[i] = "S"
+        else:
+            #miss
+            player.search[i] = "M"
