@@ -66,7 +66,7 @@ class Game:
     
     def makeMove(self, i):
         player = self.player1 if self.player1Turn == True else self.player2
-        opponent = self.player1 if self.player1Turn == False else self.player2
+        opponent = self.player2 if self.player1Turn == True else self.player1
 
         #if i is a ship
         if i in opponent.indexes:
@@ -79,7 +79,8 @@ class Game:
                         sunk = False
                 if sunk:
                     for index in ship.indexes:
-                        player.search[i] = "S"
+                        player.search[index] = "S"
         else:
             #miss
             player.search[i] = "M"
+        self.player1Turn = not self.player1Turn
