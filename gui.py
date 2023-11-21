@@ -2,7 +2,9 @@ import pygame
 from engine import *
 
 pygame.init()
+pygame.font.init()
 pygame.display.set_caption("Battleship")
+font = pygame.font.SysFont("fresansttf", 100)
 
 #GLOBAL VARIABLES HERE
 SQUARE_SIZE = 25
@@ -118,5 +120,11 @@ while running:
         draw_missiles(game.player2, left = 2*BUFFER + BOARDHEIGHT)
         draw_ships(game.player1, color = PLAYER1COLOR)
         draw_ships(game.player2, left = (BOARDHEIGHT + 2*BUFFER), color = PLAYER2COLOR)
+
+        #game over
+        if game.gameOver:
+            string = game.winner + " Wins!"
+            textbox = font.render(string, False, BOARDCOLOR, WHITE)
+            SCREEN.blit(textbox, (WIDTH//2 - 250, HEIGHT//4))
 
         pygame.display.flip()

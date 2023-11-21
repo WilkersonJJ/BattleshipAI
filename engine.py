@@ -63,6 +63,7 @@ class Game:
         self.player2 = Player()
         self.player1Turn = True
         self.gameOver = False
+        self.winner = None #stores who won the game
     
     def makeMove(self, i):
         player = self.player1 if self.player1Turn == True else self.player2
@@ -83,4 +84,13 @@ class Game:
         else:
             #miss
             player.search[i] = "M"
+        #check if the game is over
+        self.gameOver = True
+        for i in opponent.indexes:
+            if player.search[i] == "U":
+                self.gameOver = False
+        if self.gameOver:
+            self.winner = "Player 1" if self.player1Turn else "Player 2"
+        
         self.player1Turn = not self.player1Turn
+        
