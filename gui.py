@@ -1,5 +1,6 @@
 import pygame
 from engine import *
+from ai import Ai
 
 pygame.init()
 pygame.font.init()
@@ -14,6 +15,10 @@ HEIGHT = 3 * BUFFER + 2*BOARDHEIGHT
 WIDTH = 3 * BUFFER + 2*BOARDHEIGHT
 SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
 INDENT = 5
+
+#these variables here determine if we are doing human vs comper or human vs human
+HUMAN1 = False
+HUMAN2 = False
 
 #PALLETE
 GREY = (40, 50, 60)
@@ -31,7 +36,6 @@ HITCOLOR = (255, 100, 100)
 MISSCOLOR = (255, 230, 255)
 SUNKCOLOR = (140, 60, 120)
 MISSILECOLORS = {"U": BACKGROUNDCOLOR, "H": HITCOLOR, "M": MISSCOLOR, "S": SUNKCOLOR}
-
 
 def draw_grid(boardNum):
     left = BUFFER
@@ -74,7 +78,9 @@ def draw_ships(player, left = BUFFER, color = PLAYER1COLOR):
         rectangle = pygame.Rect(x, y, width, height)
         pygame.draw.rect(SCREEN, color, rectangle, border_radius = 15)
 
-game = Game()
+game = Game(HUMAN1, HUMAN2)
+ai1 = Ai(game.player1)
+ai2 = Ai(game.player2)
 
 #this is the main loop of pygame
 running = True
@@ -121,10 +127,20 @@ while running:
         draw_ships(game.player1, color = PLAYER1COLOR)
         draw_ships(game.player2, left = (BOARDHEIGHT + 2*BUFFER), color = PLAYER2COLOR)
 
+        #if its the computer's turn
+        if not game.gameOver and game.computerTurn:
+            if game.player1Turn:
+                aiMove = ai1.makeMove()
+                game.makeMove(aiMove)
+            else:
+                aiMove = ai2.makeMove()
+                game.makeMove(aiMove)
+
         #game over
         if game.gameOver:
             string = game.winner + " Wins!"
             textbox = font.render(string, False, BOARDCOLOR, WHITE)
             SCREEN.blit(textbox, (WIDTH//2 - 250, HEIGHT//4))
-
+            
+        pygame.time.wait(100)
         pygame.display.flip()

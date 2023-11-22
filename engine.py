@@ -58,12 +58,15 @@ class Player:
                     placed = True
 
 class Game:
-    def __init__(self):
+    def __init__(self, human1, human2):
+        self.human1 = human1
+        self.human2 = human2
         self.player1 = Player()
         self.player2 = Player()
         self.player1Turn = True
         self.gameOver = False
         self.winner = None #stores who won the game
+        self.computerTurn = True if not self.human1 else False
     
     def makeMove(self, i):
         player = self.player1 if self.player1Turn == True else self.player2
@@ -93,4 +96,8 @@ class Game:
             self.winner = "Player 1" if self.player1Turn else "Player 2"
         
         self.player1Turn = not self.player1Turn
+
+        #if there is exactly one human playing, switch computer turn
+        if (self.human1 ^ self.human2):
+            self.computerTurn = not self.computerTurn
         
