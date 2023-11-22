@@ -141,6 +141,13 @@ while running:
             string = game.winner + " Wins!"
             textbox = font.render(string, False, BOARDCOLOR, WHITE)
             SCREEN.blit(textbox, (WIDTH//2 - 250, HEIGHT//4))
-            
+
         pygame.time.wait(100)
         pygame.display.flip()
+
+#TODO: Text for board positions (a-i), (1-9)
+#TODO: Cover Board Option
+#TODO: Ship Placement Option
+#TODO: Clean Up Gui a bit, move more logic into engine
+#TODO: Label text, which turn it is and whose board is whose and who is an ai
+#TODO: obviously implement the AI
