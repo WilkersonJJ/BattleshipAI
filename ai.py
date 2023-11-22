@@ -4,7 +4,7 @@ import random
 class Ai:
     def __init__(self, player):
         self.search = player.search
-        self.playerNum = player
+        self.player = player
 
     def makeMove(self):
         randomMove = self.randomMove()
