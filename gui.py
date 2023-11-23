@@ -20,6 +20,10 @@ INDENT = 5
 HUMAN1 = False
 HUMAN2 = False
 
+#these variables here determine the type of AI used by the computer
+COMPUTER1 = Ai.randomHuntMove
+COMPUTER2 = Ai.randomMove
+
 #PALLETE
 GREY = (40, 50, 60)
 BLUEGREY = (100, 100, 150)
@@ -79,8 +83,8 @@ def draw_ships(player, left = BUFFER, color = PLAYER1COLOR):
         pygame.draw.rect(SCREEN, color, rectangle, border_radius = 15)
 
 game = Game(HUMAN1, HUMAN2)
-ai1 = Ai(game.player1)
-ai2 = Ai(game.player2)
+ai1 = Ai(game.player1, COMPUTER1)
+ai2 = Ai(game.player2, COMPUTER2)
 
 #this is the main loop of pygame
 running = True
