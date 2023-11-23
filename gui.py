@@ -15,13 +15,14 @@ HEIGHT = 3 * BUFFER + 2*BOARDHEIGHT
 WIDTH = 3 * BUFFER + 2*BOARDHEIGHT
 SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
 INDENT = 5
+TICKRATE = 50
 
 #these variables here determine if we are doing human vs comper or human vs human
 HUMAN1 = False
 HUMAN2 = False
 
 #these variables here determine the type of AI used by the computer
-COMPUTER1 = Ai.randomHuntMove
+COMPUTER1 = Ai.pairitySmartHuntMove
 COMPUTER2 = Ai.randomMove
 
 #PALLETE
@@ -146,7 +147,7 @@ while running:
             textbox = font.render(string, False, BOARDCOLOR, WHITE)
             SCREEN.blit(textbox, (WIDTH//2 - 250, HEIGHT//4))
 
-        pygame.time.wait(100)
+        pygame.time.wait(TICKRATE)
         pygame.display.flip()
 
 #TODO: Text for board positions (a-i), (1-9)
