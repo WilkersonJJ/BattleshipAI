@@ -7,6 +7,7 @@ pygame.init()
 pygame.font.init()
 pygame.display.set_caption("Battleship")
 font = pygame.font.SysFont("fresansttf", 50)
+smallfont = pygame.font.SysFont("fresansttf", 15)
 
 SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
 
@@ -50,6 +51,25 @@ def draw_ships(player, left = BUFFER, color = PLAYER1COLOR):
             height = ship.size * SQUARE_SIZE - 2*INDENT
         rectangle = pygame.Rect(x, y, width, height)
         pygame.draw.rect(SCREEN, color, rectangle, border_radius = 15)
+
+def draw_labels():
+    p1Label = "Player 1: "
+    p2Label = "Player 2: "
+    if HUMAN1:
+        p1Label += "Human"
+    else:
+        p1Label += "AI "
+        p1Label += list(moveType.keys())[list(moveType.values()).index(COMPUTER1)]
+    if HUMAN2:
+        p2Label += "Human"
+    else:
+        p2Label += "AI "
+        p2Label += list(moveType.keys())[list(moveType.values()).index(COMPUTER2)]
+
+    txt1 = smallfont.render(p1Label, False, BOARDCOLOR, BACKGROUNDCOLOR)
+    txt2 = smallfont.render(p2Label, False, BOARDCOLOR, BACKGROUNDCOLOR)
+    SCREEN.blit(txt1, (BUFFER, BUFFER - 15))
+    SCREEN.blit(txt2, (2*BUFFER + BOARDHEIGHT, BUFFER -15))
 
 game = Game(HUMAN1, HUMAN2)
 ai1 = Ai(game.player1, COMPUTER1)
@@ -98,6 +118,8 @@ while running:
         draw_missiles(game.player1)
         draw_missiles(game.player2, left = 2*BUFFER + BOARDHEIGHT)
 
+        draw_labels()
+
         if not HIDEBOARD:
             draw_ships(game.player1, color = PLAYER1COLOR)
             draw_ships(game.player2, left = (BOARDHEIGHT + 2*BUFFER), color = PLAYER2COLOR)
@@ -124,8 +146,6 @@ while running:
         pygame.display.flip()
 
 #TODO: Text for board positions (a-i), (1-9)
-#TODO: Cover Board Option
 #TODO: Ship Placement Option
 #TODO: Clean Up Gui a bit, move more logic into engine
-#TODO: Label text, which turn it is and whose board is whose and who is an ai
-#TODO: obviously implement the AI
+#TODO: Create Better AI

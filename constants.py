@@ -12,11 +12,11 @@ INDENT = 5
 TICKRATE = 50
 
 #these variables here determine if we are doing human vs comper or human vs human
-HUMAN1 = False
+HUMAN1 = True
 HUMAN2 = False
 
 #Cover the bottom boards
-HIDEBOARD = False
+HIDEBOARD = True
 
 #these variables here determine the type of AI used by the computer
 #Options: Ai.pairitySmartHuntMove, Ai.randomMove, Ai.randomHuntMove, Ai.randomSmartHuntMove
@@ -25,7 +25,7 @@ moveType = {"Random": Ai.randomMove,
             "RandomSmartHunt": Ai.randomSmartHuntMove, 
             "Parity": Ai.pairitySmartHuntMove}
 COMPUTER1 = moveType["Parity"]
-COMPUTER2 = moveType["Random"]
+COMPUTER2 = moveType["RandomSmartHunt"]
 
 #PALLETES
 GREY = (40, 50, 60)
