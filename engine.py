@@ -21,6 +21,7 @@ class Ship:
         
 class Player:
     def __init__(self):
+        self.moves = 1
         self.ships = []
         self.search = ["U" for i in range(100)]
         self.place_ships(sizes = [5, 4, 3, 3, 2])
@@ -87,6 +88,10 @@ class Game:
         else:
             #miss
             player.search[i] = "M"
+
+        #increment moves
+        player.moves += 1
+
         #check if the game is over
         self.gameOver = True
         for i in opponent.indexes:

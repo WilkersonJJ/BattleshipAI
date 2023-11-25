@@ -1,46 +1,14 @@
 import pygame
 from engine import *
 from ai import Ai
+from constants import *
 
 pygame.init()
 pygame.font.init()
 pygame.display.set_caption("Battleship")
-font = pygame.font.SysFont("fresansttf", 100)
+font = pygame.font.SysFont("fresansttf", 50)
 
-#GLOBAL VARIABLES HERE
-SQUARE_SIZE = 25
-BUFFER = 30
-BOARDHEIGHT = SQUARE_SIZE * 10
-HEIGHT = 3 * BUFFER + 2*BOARDHEIGHT
-WIDTH = 3 * BUFFER + 2*BOARDHEIGHT
 SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
-INDENT = 5
-TICKRATE = 50
-
-#these variables here determine if we are doing human vs comper or human vs human
-HUMAN1 = False
-HUMAN2 = False
-
-#these variables here determine the type of AI used by the computer
-COMPUTER1 = Ai.pairitySmartHuntMove
-COMPUTER2 = Ai.randomMove
-
-#PALLETE
-GREY = (40, 50, 60)
-BLUEGREY = (100, 100, 150)
-WHITE = (255, 255, 255)
-GREEN = (0, 200, 70)
-BLUE = (0, 50, 200)
-
-#Girlypop pallete
-BOARDCOLOR = (255, 169, 188)
-PLAYER1COLOR = (251, 111, 146)
-PLAYER2COLOR = (152, 182, 218)
-BACKGROUNDCOLOR = (255, 229, 236)
-HITCOLOR = (255, 100, 100)
-MISSCOLOR = (255, 230, 255)
-SUNKCOLOR = (140, 60, 120)
-MISSILECOLORS = {"U": BACKGROUNDCOLOR, "H": HITCOLOR, "M": MISSCOLOR, "S": SUNKCOLOR}
 
 def draw_grid(boardNum):
     left = BUFFER
@@ -129,8 +97,10 @@ while running:
             draw_grid(i+1)
         draw_missiles(game.player1)
         draw_missiles(game.player2, left = 2*BUFFER + BOARDHEIGHT)
-        draw_ships(game.player1, color = PLAYER1COLOR)
-        draw_ships(game.player2, left = (BOARDHEIGHT + 2*BUFFER), color = PLAYER2COLOR)
+
+        if not HIDEBOARD:
+            draw_ships(game.player1, color = PLAYER1COLOR)
+            draw_ships(game.player2, left = (BOARDHEIGHT + 2*BUFFER), color = PLAYER2COLOR)
 
         #if its the computer's turn
         if not game.gameOver and game.computerTurn:
@@ -143,7 +113,10 @@ while running:
 
         #game over
         if game.gameOver:
-            string = game.winner + " Wins!"
+            draw_ships(game.player1, color = PLAYER1COLOR)
+            draw_ships(game.player2, left = (BOARDHEIGHT + 2*BUFFER), color = PLAYER2COLOR)
+            movesString = str(game.player1.moves) if game.player1Turn else str(game.player2.moves)
+            string = game.winner + " Wins!" + " Moves: " + movesString
             textbox = font.render(string, False, BOARDCOLOR, WHITE)
             SCREEN.blit(textbox, (WIDTH//2 - 250, HEIGHT//4))
 
