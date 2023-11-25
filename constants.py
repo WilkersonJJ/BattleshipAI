@@ -9,10 +9,10 @@ WIDTH = 3 * BUFFER + 2*BOARDHEIGHT
 INDENT = 5
 
 #Game Speed
-TICKRATE = 50
+TICKRATE = 0
 
 #these variables here determine if we are doing human vs comper or human vs human
-HUMAN1 = True
+HUMAN1 = False
 HUMAN2 = False
 
 #Cover the bottom boards
@@ -24,8 +24,8 @@ moveType = {"Random": Ai.randomMove,
             "RandomHunt": Ai.randomHuntMove, 
             "RandomSmartHunt": Ai.randomSmartHuntMove, 
             "Parity": Ai.pairitySmartHuntMove}
-COMPUTER1 = moveType["Parity"]
-COMPUTER2 = moveType["RandomSmartHunt"]
+COMPUTER1 = moveType["Random"]
+COMPUTER2 = moveType["Random"]
 
 #PALLETES
 GREY = (40, 50, 60)
