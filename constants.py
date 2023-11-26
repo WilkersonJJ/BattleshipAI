@@ -1,13 +1,5 @@
 from ai import *
 
-#Variables for board size
-SQUARE_SIZE = 25
-BUFFER = 30
-BOARDHEIGHT = SQUARE_SIZE * 10
-HEIGHT = 3 * BUFFER + 2*BOARDHEIGHT
-WIDTH = 3 * BUFFER + 2*BOARDHEIGHT
-INDENT = 5
-
 #Game Speed
 TICKRATE = 0
 
@@ -18,14 +10,25 @@ HUMAN2 = False
 #Cover the bottom boards
 HIDEBOARD = True
 
+#results file
+RESULTFILE = "result.csv"
+
 #these variables here determine the type of AI used by the computer
 #Options: Ai.pairitySmartHuntMove, Ai.randomMove, Ai.randomHuntMove, Ai.randomSmartHuntMove
 moveType = {"Random": Ai.randomMove, 
             "RandomHunt": Ai.randomHuntMove, 
             "RandomSmartHunt": Ai.randomSmartHuntMove, 
             "Parity": Ai.pairitySmartHuntMove}
-COMPUTER1 = moveType["Random"]
+COMPUTER1 = moveType["Parity"]
 COMPUTER2 = moveType["Random"]
+
+#Variables for board size
+SQUARE_SIZE = 25
+BUFFER = 30
+BOARDHEIGHT = SQUARE_SIZE * 10
+HEIGHT = 3 * BUFFER + 2*BOARDHEIGHT
+WIDTH = 3 * BUFFER + 2*BOARDHEIGHT
+INDENT = 5
 
 #PALLETES
 GREY = (40, 50, 60)

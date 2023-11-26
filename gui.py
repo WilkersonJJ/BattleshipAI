@@ -11,6 +11,14 @@ smallfont = pygame.font.SysFont("fresansttf", 15)
 
 SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
 
+global recorded
+global p1Label
+global p2Label
+
+recorded = False
+p1Label = ""
+p2Label = ""
+
 def draw_grid(boardNum):
     left = BUFFER
     top = BUFFER
@@ -53,6 +61,8 @@ def draw_ships(player, left = BUFFER, color = PLAYER1COLOR):
         pygame.draw.rect(SCREEN, color, rectangle, border_radius = 15)
 
 def draw_labels():
+    global p1Label
+    global p2Label
     p1Label = "Player 1: "
     p2Label = "Player 2: "
     if HUMAN1:
@@ -70,6 +80,17 @@ def draw_labels():
     txt2 = smallfont.render(p2Label, False, BOARDCOLOR, BACKGROUNDCOLOR)
     SCREEN.blit(txt1, (BUFFER, BUFFER - 15))
     SCREEN.blit(txt2, (2*BUFFER + BOARDHEIGHT, BUFFER -15))
+
+#writes our results to a csv
+def appendResults(winner, moves, p1, p2, recorded):
+    p1Str = p1.split(": ")[1]
+    p2Str = p1.split(": ")[1]
+    if not recorded:
+        string = p1Str + "," + p2Str + "," + str(winner) + "," + moves
+        f = open(RESULTFILE, 'a')
+        f.write(string + "\n")
+        f.close()
+    recorded = True
 
 game = Game(HUMAN1, HUMAN2)
 ai1 = Ai(game.player1, COMPUTER1)
@@ -140,7 +161,9 @@ while running:
             movesString = str(game.player1.moves) if game.player1Turn else str(game.player2.moves)
             string = game.winner + " Wins!" + " Moves: " + movesString
             textbox = font.render(string, False, BOARDCOLOR, WHITE)
+            appendResults(game.winner, movesString, p1Label, p2Label, recorded)
             SCREEN.blit(textbox, (WIDTH//2 - 250, HEIGHT//4))
+            pausing = True
 
         pygame.time.wait(TICKRATE)
         pygame.display.flip()
