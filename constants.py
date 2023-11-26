@@ -19,8 +19,8 @@ moveType = {"Random": Ai.randomMove,
             "RandomHunt": Ai.randomHuntMove, 
             "RandomSmartHunt": Ai.randomSmartHuntMove, 
             "Parity": Ai.pairitySmartHuntMove}
-COMPUTER1 = moveType["Parity"]
-COMPUTER2 = moveType["Random"]
+COMPUTER1 = moveType["Random"]
+COMPUTER2 = moveType["Parity"]
 
 #Variables for board size
 SQUARE_SIZE = 25

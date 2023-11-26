@@ -1,2 +1,161 @@
 Player 1, Player 2, Winner, Moves
-AI Parity,AI Parity,Player 1,34
+AI Parity,Human,Player 2,50
+AI Parity,Human,Player 1,46
+AI Parity,Human,Player 2,60
+AI Parity,Human,Player 2,41
+AI Parity,Human,Player 1,46
+AI Parity,Human,Player 1,43
+AI Parity,Human,Player 1,61
+AI Parity,Human,Player 1,42
+AI Parity,Human,Player 1,62
+AI Parity,Human,Player 2,47
+AI Parity,Human,Player 1,43
+AI Parity,Human,Player 1,59
+AI Parity,Human,Player 1,45
+AI Parity,Human,Player 1,31
+AI Parity,Human,Player 1,25
+AI Parity,Human,Player 2,46
+AI Parity,Human,Player 1,51
+AI Parity,Human,Player 1,57
+AI Parity,Human,Player 2,50
+AI Parity,Human,Player 1,37
+AI Random,Human,Player 2,52
+AI Random,Human,Player 2,65
+AI Random,Human,Player 2,71
+AI Random,Human,Player 2,55
+AI Random,Human,Player 2,61
+AI Random,Human,Player 2,67
+AI Random,Human,Player 2,69
+AI Random,Human,Player 2,58
+AI Random,Human,Player 2,54
+AI Random,Human,Player 2,41
+AI Random,Human,Player 2,57
+AI Random,Human,Player 2,69
+AI Random,Human,Player 2,65
+AI Random,Human,Player 2,72
+AI Random,Human,Player 2,65
+AI Random,Human,Player 2,46
+AI Random,Human,Player 2,52
+AI Random,Human,Player 2,63
+AI Random,Human,Player 2,34
+AI Random,Human,Player 2,62
+AI RandomHunt,Human,Player 2,64
+AI RandomHunt,Human,Player 2,49
+AI RandomHunt,Human,Player 2,37
+AI RandomHunt,Human,Player 2,38
+AI RandomHunt,Human,Player 2,33
+AI RandomHunt,Human,Player 2,60
+AI RandomHunt,Human,Player 2,51
+AI RandomHunt,Human,Player 1,38
+AI RandomHunt,Human,Player 2,46
+AI RandomHunt,Human,Player 2,50
+AI RandomHunt,Human,Player 2,49
+AI RandomHunt,Human,Player 2,63
+AI RandomHunt,Human,Player 1,35
+AI RandomHunt,Human,Player 2,54
+AI RandomHunt,Human,Player 2,48
+AI RandomHunt,Human,Player 2,32
+AI RandomHunt,Human,Player 2,52
+AI RandomHunt,Human,Player 2,42
+AI RandomHunt,Human,Player 2,42
+AI RandomHunt,Human,Player 2,43
+AI RandomSmartHunt,Human,Player 1,43
+AI RandomSmartHunt,Human,Player 2,45
+AI RandomSmartHunt,Human,Player 1,61
+AI RandomSmartHunt,Human,Player 2,70
+AI RandomSmartHunt,Human,Player 2,53
+AI RandomSmartHunt,Human,Player 1,50
+AI RandomSmartHunt,Human,Player 2,36
+AI RandomSmartHunt,Human,Player 1,64
+AI RandomSmartHunt,Human,Player 1,68
+AI RandomSmartHunt,Human,Player 2,47
+AI RandomSmartHunt,Human,Player 1,51
+AI RandomSmartHunt,Human,Player 2,68
+AI RandomSmartHunt,Human,Player 2,66
+AI RandomSmartHunt,Human,Player 1,38
+AI RandomSmartHunt,Human,Player 1,36
+AI RandomSmartHunt,Human,Player 2,30
+AI RandomSmartHunt,Human,Player 1,52
+AI RandomSmartHunt,Human,Player 2,41
+AI RandomSmartHunt,Human,Player 2,63
+AI RandomSmartHunt,Human,Player 2,36
+AI Random,AI Random,Player 2,92
+AI Random,AI Random,Player 1,97
+AI Random,AI Random,Player 1,93
+AI Random,AI Random,Player 1,96
+AI Random,AI Random,Player 2,89
+AI Random,AI Random,Player 1,85
+AI Random,AI Random,Player 2,88
+AI Random,AI Random,Player 1,92
+AI Random,AI Random,Player 1,98
+AI Random,AI Random,Player 2,98
+AI Random,AI Random,Player 2,97
+AI Random,AI Random,Player 2,92
+AI Random,AI Random,Player 2,93
+AI Random,AI Random,Player 2,94
+AI Random,AI Random,Player 1,93
+AI Random,AI Random,Player 1,89
+AI Random,AI Random,Player 1,92
+AI Random,AI Random,Player 1,88
+AI Random,AI Random,Player 2,94
+AI Random,AI Random,Player 1,94
+AI Random,AI RandomHunt,Player 2,77
+AI Random,AI RandomHunt,Player 2,59
+AI Random,AI RandomHunt,Player 2,77
+AI Random,AI RandomHunt,Player 2,66
+AI Random,AI RandomHunt,Player 2,85
+AI Random,AI RandomHunt,Player 2,61
+AI Random,AI RandomHunt,Player 2,79
+AI Random,AI RandomHunt,Player 2,70
+AI Random,AI RandomHunt,Player 2,82
+AI Random,AI RandomHunt,Player 2,80
+AI Random,AI RandomHunt,Player 2,50
+AI Random,AI RandomHunt,Player 2,60
+AI Random,AI RandomHunt,Player 2,47
+AI Random,AI RandomHunt,Player 2,55
+AI Random,AI RandomHunt,Player 2,61
+AI Random,AI RandomHunt,Player 2,76
+AI Random,AI RandomHunt,Player 2,74
+AI Random,AI RandomHunt,Player 2,46
+AI Random,AI RandomHunt,Player 2,53
+AI Random,AI RandomHunt,Player 2,44
+AI Random,AI RandomSmartHunt,Player 2,57
+AI Random,AI RandomSmartHunt,Player 2,73
+AI Random,AI RandomSmartHunt,Player 2,36
+AI Random,AI RandomSmartHunt,Player 2,42
+AI Random,AI RandomSmartHunt,Player 2,60
+AI Random,AI RandomSmartHunt,Player 2,46
+AI Random,AI RandomSmartHunt,Player 2,72
+AI Random,AI RandomSmartHunt,Player 2,52
+AI Random,AI RandomSmartHunt,Player 2,62
+AI Random,AI RandomSmartHunt,Player 2,47
+AI Random,AI RandomSmartHunt,Player 2,61
+AI Random,AI RandomSmartHunt,Player 2,79
+AI Random,AI RandomSmartHunt,Player 2,98
+AI Random,AI RandomSmartHunt,Player 2,43
+AI Random,AI RandomSmartHunt,Player 2,41
+AI Random,AI RandomSmartHunt,Player 2,97
+AI Random,AI RandomSmartHunt,Player 2,53
+AI Random,AI RandomSmartHunt,Player 2,54
+AI Random,AI RandomSmartHunt,Player 2,66
+AI Random,AI RandomSmartHunt,Player 2,75
+AI Random,AI Parity,Player 2,45
+AI Random,AI Parity,Player 2,52
+AI Random,AI Parity,Player 2,65
+AI Random,AI Parity,Player 2,64
+AI Random,AI Parity,Player 2,61
+AI Random,AI Parity,Player 2,47
+AI Random,AI Parity,Player 2,49
+AI Random,AI Parity,Player 2,65
+AI Random,AI Parity,Player 2,59
+AI Random,AI Parity,Player 2,48
+AI Random,AI Parity,Player 2,34
+AI Random,AI Parity,Player 2,46
+AI Random,AI Parity,Player 2,60
+AI Random,AI Parity,Player 2,56
+AI Random,AI Parity,Player 2,55
+AI Random,AI Parity,Player 2,54
+AI Random,AI Parity,Player 2,56
+AI Random,AI Parity,Player 2,61
+AI Random,AI Parity,Player 2,37
+AI Random,AI Parity,Player 2,57

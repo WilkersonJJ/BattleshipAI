@@ -84,7 +84,7 @@ def draw_labels():
 #writes our results to a csv
 def appendResults(winner, moves, p1, p2, recorded):
     p1Str = p1.split(": ")[1]
-    p2Str = p1.split(": ")[1]
+    p2Str = p2.split(": ")[1]
     if not recorded:
         string = p1Str + "," + p2Str + "," + str(winner) + "," + moves
         f = open(RESULTFILE, 'a')
@@ -106,6 +106,10 @@ while running:
             running = False
         if event.type == pygame.MOUSEBUTTONDOWN:
             x, y = pygame.mouse.get_pos()
+
+            # Adjust mouse cords for lines
+            x -= 5
+            y += 5
             leftSide1 = BUFFER
             rightSide1 = BUFFER + BOARDHEIGHT
             leftSide2 = BUFFER * 2 + BOARDHEIGHT
@@ -117,13 +121,15 @@ while running:
                 row = (y - BUFFER) // SQUARE_SIZE
                 col = x // SQUARE_SIZE
                 index = row * 10 + col - 1
-                game.makeMove(index)
+                if index >= 0 and index <= 99 and game.player1.search[index] == "U":
+                    game.makeMove(index)
             #if its player 2's turn and they clicked correctly
             if (not game.player1Turn) and x < rightSide2 and x > leftSide2 and y < botSide and y > topSide:
                 row = (y - 2*BUFFER) // SQUARE_SIZE
                 col = (x - BUFFER) // SQUARE_SIZE
                 index = row * 10 + col - 1
-                game.makeMove(index)
+                if index >= 0 and index <= 99 and game.player2.search[index] == "U":
+                    game.makeMove(index)
 
         #on keypress
         if event.type == pygame.KEYDOWN:
