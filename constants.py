@@ -5,13 +5,15 @@ TICKRATE = 0
 
 #these variables here determine if we are doing human vs comper or human vs human
 HUMAN1 = False
-HUMAN2 = False
+HUMAN2 = True
 
 #Cover the bottom boards
 HIDEBOARD = True
 
 #results file
 RESULTFILE = "result.csv"
+
+SHIPSIZES = [5, 4, 3, 3, 2]
 
 #these variables here determine the type of AI used by the computer
 #Options: Ai.pairitySmartHuntMove, Ai.randomMove, Ai.randomHuntMove, Ai.randomSmartHuntMove

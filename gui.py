@@ -162,15 +162,19 @@ while running:
 
         #game over
         if game.gameOver:
+            #final draw ships, just in case the board was covered
             draw_ships(game.player1, color = PLAYER1COLOR)
             draw_ships(game.player2, left = (BOARDHEIGHT + 2*BUFFER), color = PLAYER2COLOR)
+            #final draw missiles
+            draw_missiles(game.player1)
+            draw_missiles(game.player2, left = 2*BUFFER + BOARDHEIGHT)
             movesString = str(game.player1.moves) if game.player1Turn else str(game.player2.moves)
             string = game.winner + " Wins!" + " Moves: " + movesString
             textbox = font.render(string, False, BOARDCOLOR, WHITE)
             appendResults(game.winner, movesString, p1Label, p2Label, recorded)
             SCREEN.blit(textbox, (WIDTH//2 - 250, HEIGHT//4))
             pausing = True
-
+            
         pygame.time.wait(TICKRATE)
         pygame.display.flip()
 

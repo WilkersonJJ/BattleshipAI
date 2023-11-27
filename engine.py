@@ -1,4 +1,5 @@
 import random
+from constants import SHIPSIZES
 
 class Ship:
     def __init__(self, size):
@@ -22,9 +23,10 @@ class Ship:
 class Player:
     def __init__(self):
         self.moves = 1
+        self.unsunkOppShips = SHIPSIZES.copy()
         self.ships = []
         self.search = ["U" for i in range(100)]
-        self.place_ships(sizes = [5, 4, 3, 3, 2])
+        self.place_ships(SHIPSIZES)
         self.indexes = []
         #get our indexes in one neat list
         for ship in self.ships:
@@ -82,7 +84,13 @@ class Game:
                 for index in ship.indexes:
                     if player.search[index] == "U":
                         sunk = False
+                #if we already know this ship has been sunk, we dont need to update
+                for index in ship.indexes:
+                    if player.search[index] == "S":
+                        sunk = False
+                #if this ship has no "U" or "S" in its indexes
                 if sunk:
+                    player.unsunkOppShips.remove(ship.size)
                     for index in ship.indexes:
                         player.search[index] = "S"
         else:
