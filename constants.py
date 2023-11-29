@@ -5,7 +5,7 @@ TICKRATE = 0
 
 #these variables here determine if we are doing human vs comper or human vs human
 HUMAN1 = False
-HUMAN2 = False
+HUMAN2 = True
 
 #Cover the bottom boards
 HIDEBOARD = True

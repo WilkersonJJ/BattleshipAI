@@ -117,13 +117,18 @@ class Ai:
         heatMap = [0] * 100
         for coordinates in itertools.permutations(possible, len(self.unsunkOppShips)):
             for orientations in itertools.combinations_with_replacement(range(1), len(self.unsunkOppShips)):
-                if random.random() < 0.0001 and self.isValid(coordinates, orientations, self.unsunkOppShips):
-                    for coordinate in coordinates:
-                        heatMap[coordinate] += 1
+                if random.random() < pow(0.1, len(self.unsunkOppShips)):
+                    shipSquares = self.isValid(coordinates, orientations, self.unsunkOppShips)
+                    if shipSquares != None:
+                        for square in shipSquares:
+                            heatMap[square] += 1
                         
         print(heatMap)
 
-        return self.randomMove()
+        highest = max(heatMap)
+        bestMoves = [i for i, square in enumerate(heatMap) if square == highest]
+
+        return random.choice(bestMoves)
     
     # Valid board sub-method
     def isValid(self, coordinates, orientations, ships):
@@ -133,11 +138,12 @@ class Ai:
 
         # Check if we've previously calculated the validity
         if tupleKey in self.boards:
+            print("Already Seen", coordinates, orientations, ships)
             return self.boards[tupleKey]
         
         # Calculate the validity
         else:
-            print("Testing config", coordinates, orientations, ships, "for the first time")
+            # print("Testing config", coordinates, orientations, ships, "for the first time")
 
             # Squares that cannot be hiding ships
             occupiedSquares = [i for i, square in enumerate(self.search) if square != "U"]
