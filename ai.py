@@ -1,15 +1,19 @@
 #this class defines all the ai functions we will be using
 import random
+import itertools
 
 class Ai:
     def __init__(self, player, move):
         self.search = player.search
         self.player = player
+        self.unsunkOppShips = player.unsunkOppShips
         self.move = move
+        self.spiral = [44, 35, 56, 65, 53, 47, 74, 62, 32, 23, 26, 77, 41, 14, 38, 68, 86, 83, 71, 17, 59, 95, 50, 5, 11, 29, 92, 20, 2, 8, 89, 98, 80]
+        self.boards = {}
 
     def makeMove(self):
-        randomMove = self.move(self)
-        return randomMove
+        move = self.move(self)
+        return move
 
     # Fires at a random untouched square
     def randomMove(self):
@@ -78,6 +82,108 @@ class Ai:
         
         # There is more than one hit, use smart hunt
         return self.smartHunt(unsunk)
+
+    # Generates a heat map of all possible ship locations and fires at the most likely spot
+    def heatMove(self):
+
+        # Start by engaging in a spiral pattern until achieving the first hit (Rodin 1988)
+        unsunk = [i for i, square in enumerate(self.search) if square == "H"]
+
+        
+        # Opener to sink one ship
+        if len(self.unsunkOppShips) == 5 and len(unsunk) == 0:
+
+            # Fire on spiral
+            return self.spiral[self.player.moves - 1]
+            
+        # Randomize unsunk list
+        random.shuffle(unsunk)
+        
+        # One hit
+        if len(unsunk) == 1:
+            return self.hunt(unsunk)
+        
+        # Multiple hits
+        if len(unsunk) > 1:
+            return self.smartHunt(unsunk)
+        
+        # No hits use heatmap
+        # NOTES: only look at unkown squares to generate coordinate permutations
+        # goal here is to generate every coordinate list that represents a possible placement of the remaining ships
+        # look at every U square, generate every combination of ship coordinates with 2 orientations per and check their validity
+        # is valid should return the list of squares, making the validity lists dictionaries that take in board descriptions and return
+        # the squares occupied by the ships if it is valid and None if it isn't
+        possible = [i for i, square in enumerate(self.search) if square == "U"]
+        heatMap = [0] * 100
+        for coordinates in itertools.permutations(possible, len(self.unsunkOppShips)):
+            for orientations in itertools.combinations_with_replacement(range(1), len(self.unsunkOppShips)):
+                if random.random() < 0.0001 and self.isValid(coordinates, orientations, self.unsunkOppShips):
+                    for coordinate in coordinates:
+                        heatMap[coordinate] += 1
+                        
+        print(heatMap)
+
+        return self.randomMove()
+    
+    # Valid board sub-method
+    def isValid(self, coordinates, orientations, ships):
+        
+        # Tuple key
+        tupleKey = (tuple(coordinates), tuple(orientations), tuple(ships))
+
+        # Check if we've previously calculated the validity
+        if tupleKey in self.boards:
+            return self.boards[tupleKey]
+        
+        # Calculate the validity
+        else:
+            print("Testing config", coordinates, orientations, ships, "for the first time")
+
+            # Squares that cannot be hiding ships
+            occupiedSquares = [i for i, square in enumerate(self.search) if square != "U"]
+
+            # Output of ship occupied spaces in this board
+            shipSquares = []
+
+            # Loop through the ships in the board
+            for shipNum in range(len(ships)):
+
+                # Horizontal orientation case
+                if orientations[shipNum] == 0:
+
+                    # Loop through each square this ship occupies
+                    for index in range(ships[shipNum] - 1):
+
+                        # If the square is over the edge or already occupied
+                        if (coordinates[shipNum] % 10) + index > 9 or coordinates[shipNum] + index in occupiedSquares or coordinates[shipNum] + index in shipSquares:
+
+                            # Mark as invalid
+                            self.boards[tupleKey] = None
+                            return None
+                        
+                        # Add to ship squares
+                        shipSquares.append(coordinates[shipNum] + index)
+
+                # Vertical orientation case
+                else:
+
+                    # Loop through each square this ship occupies
+                    for index in range(ships[shipNum] - 1):
+
+                        # If the square is over the edge or already occupied
+                        if coordinates[shipNum] + (index * 10) > 99 or coordinates[shipNum] + (index * 10) in occupiedSquares or coordinates[shipNum] + (index * 10) in shipSquares:
+
+                            # Mark as invalid
+                            self.boards[tupleKey] = None
+                            return None
+                        
+                        # Add to ship squares
+                        occupiedSquares.append(coordinates[shipNum] + (index * 10))
+            
+            # If we found no conflicts append to valid boards and return true
+            self.boards[tupleKey] = shipSquares
+            return shipSquares   
+
     
     # Hunting mode sub-method
     def hunt(self, unsunk):

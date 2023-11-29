@@ -5,7 +5,7 @@ TICKRATE = 0
 
 #these variables here determine if we are doing human vs comper or human vs human
 HUMAN1 = False
-HUMAN2 = True
+HUMAN2 = False
 
 #Cover the bottom boards
 HIDEBOARD = True
@@ -20,9 +20,10 @@ SHIPSIZES = [5, 4, 3, 3, 2]
 moveType = {"Random": Ai.randomMove, 
             "RandomHunt": Ai.randomHuntMove, 
             "RandomSmartHunt": Ai.randomSmartHuntMove, 
-            "Parity": Ai.pairitySmartHuntMove}
-COMPUTER1 = moveType["Random"]
-COMPUTER2 = moveType["Parity"]
+            "Parity": Ai.pairitySmartHuntMove,
+            "Heat": Ai.heatMove}
+COMPUTER1 = moveType["Heat"]
+COMPUTER2 = moveType["Random"]
 
 #Variables for board size
 SQUARE_SIZE = 25
