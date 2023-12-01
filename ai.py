@@ -113,15 +113,57 @@ class Ai:
         # look at every U square, generate every combination of ship coordinates with 2 orientations per and check their validity
         # is valid should return the list of squares, making the validity lists dictionaries that take in board descriptions and return
         # the squares occupied by the ships if it is valid and None if it isn't
-        possible = [i for i, square in enumerate(self.search) if square == "U"]
+
+        # Generate lists of ship placements, one for each size, checked against the state of the board
+        ships = [[], [], [], []]
+        freeSquares = [i for i, square in enumerate(self.search) if square == "U"]
+        occupiedSquares = [i for i, square in enumerate(self.search) if square != "U"]
+        for square in freeSquares:
+
+            # Ship that we're checking
+            ship = [square]
+
+            # Horizontal orientation case
+            for index in range(1, 5):
+
+                # Check if the next square is over the edge or already occupied
+                if (square % 10) + index > 9 or square + index in occupiedSquares:
+                    break
+                
+                # If the placable zone is longer than one, add it to the appropriate list
+                ship.append(square + index)
+                ships[index - 1].append(tuple(ship))
+
+            # Ship that we're checking
+            ship = [square]
+
+            # Vertical orientation case
+            for index in range(1, 5):
+
+                # If the square is over the edge or already occupied
+                if square + (index * 10) > 99 or square + (index * 10) in occupiedSquares:
+                    break
+                
+                # If the placable zone is longer than one, add it to the appropriate list
+                ship.append(square + (index * 10))
+                ships[index - 1].append(tuple(ship))
+
+        # Iterate through all of the placement combinations for the unsunk ships
         heatMap = [0] * 100
-        for coordinates in itertools.permutations(possible, len(self.unsunkOppShips)):
-            for orientations in itertools.combinations_with_replacement(range(1), len(self.unsunkOppShips)):
-                if random.random() < pow(0.1, len(self.unsunkOppShips)):
-                    shipSquares = self.isValid(coordinates, orientations, self.unsunkOppShips)
-                    if shipSquares != None:
-                        for square in shipSquares:
-                            heatMap[square] += 1
+        unsunkShips = []
+        for num in self.unsunkOppShips:
+            unsunkShips.append(ships[num - 2])
+        length = sum(self.unsunkOppShips)
+        counter = 0
+        for config in itertools.product(*unsunkShips):
+            counter += 1
+            configSquares = set(itertools.chain.from_iterable(config))
+            # If there is an overlap, then the lengths will not match up
+            if counter % 10000000 == 0:
+                print(configSquares)
+            if length == len(configSquares):
+                for square in configSquares:
+                    heatMap[square] += 1
                         
         print(heatMap)
 

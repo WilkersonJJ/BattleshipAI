@@ -1,11 +1,11 @@
 from ai import *
 
 #Game Speed
-TICKRATE = 0
+TICKRATE = 50
 
 #these variables here determine if we are doing human vs comper or human vs human
 HUMAN1 = False
-HUMAN2 = True
+HUMAN2 = False
 
 #Cover the bottom boards
 HIDEBOARD = True
