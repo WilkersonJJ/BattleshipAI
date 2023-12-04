@@ -95,6 +95,7 @@ def appendResults(winner, moves, p1, p2, recorded):
 game = Game(HUMAN1, HUMAN2)
 ai1 = Ai(game.player1, COMPUTER1)
 ai2 = Ai(game.player2, COMPUTER2)
+counter = 0
 
 #this is the main loop of pygame
 running = True
@@ -175,17 +176,13 @@ while running:
             SCREEN.blit(textbox, (WIDTH//2 - 250, HEIGHT//4))
             pausing = True
 
-            if AUTORESTART:
+            if AUTORESTART and counter < 50:
                 #make a new game and play infinitely
                 game = Game(HUMAN1, HUMAN2)
                 ai1 = Ai(game.player1, COMPUTER1)
                 ai2 = Ai(game.player2, COMPUTER2)
                 pausing = False
+                counter += 1
             
         pygame.time.wait(TICKRATE)
         pygame.display.flip()
-
-#TODO: Text for board positions (a-i), (1-9)
-#TODO: Ship Placement Option
-#TODO: Clean Up Gui a bit, move more logic into engine
-#TODO: Create Better AI
