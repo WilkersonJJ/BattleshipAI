@@ -174,11 +174,13 @@ while running:
             appendResults(game.winner, movesString, p1Label, p2Label, recorded)
             SCREEN.blit(textbox, (WIDTH//2 - 250, HEIGHT//4))
             pausing = True
-            #make a new game
-            game = Game(HUMAN1, HUMAN2)
-            ai1 = Ai(game.player1, COMPUTER1)
-            ai2 = Ai(game.player2, COMPUTER2)
-            pausing = False
+
+            if AUTORESTART:
+                #make a new game and play infinitely
+                game = Game(HUMAN1, HUMAN2)
+                ai1 = Ai(game.player1, COMPUTER1)
+                ai2 = Ai(game.player2, COMPUTER2)
+                pausing = False
             
         pygame.time.wait(TICKRATE)
         pygame.display.flip()

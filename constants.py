@@ -10,6 +10,9 @@ HUMAN2 = False
 #Cover the bottom boards
 HIDEBOARD = False
 
+#automatically restart the game on win
+AUTORESTART = True
+
 #results file
 RESULTFILE = "result.csv"
 
