@@ -102,6 +102,7 @@ class Game:
 
         #check if the game is over
         self.gameOver = True
+        print("opp indexes", opponent.indexes)
         for i in opponent.indexes:
             if player.search[i] == "U":
                 self.gameOver = False

@@ -11,7 +11,7 @@ HUMAN2 = False
 HIDEBOARD = False
 
 #automatically restart the game on win
-AUTORESTART = True
+AUTORESTART = False
 NUMOFRUNS = 20
 
 #results file
@@ -27,7 +27,7 @@ moveType = {"Random": Ai.randomMove,
             "Parity": Ai.pairitySmartHuntMove,
             "Heat": Ai.heatMove}
 COMPUTER1 = moveType["Random"]
-COMPUTER2 = moveType["Heat"]
+COMPUTER2 = moveType["Random"]
 
 #Variables for board size
 SQUARE_SIZE = 25

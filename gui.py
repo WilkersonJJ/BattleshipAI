@@ -96,6 +96,46 @@ game = Game(HUMAN1, HUMAN2)
 ai1 = Ai(game.player1, COMPUTER1)
 ai2 = Ai(game.player2, COMPUTER2)
 runCounter = 0
+#=============CONSTRUCTION ZONE==============
+#this temporary code is for manual placement of ships
+ship1 = Ship(2)
+ship1.row = 0
+ship1.col = 0
+ship1.orientation = "h"
+ship1.indexes = ship1.compute_indexes()
+
+ship2 = Ship(3)
+ship2.row = 1
+ship2.col = 0
+ship2.orientation = "h"
+ship2.indexes = ship2.compute_indexes()
+
+ship3 = Ship(3)
+ship3.row = 2
+ship3.col = 0
+ship3.orientation = "h"
+ship3.indexes = ship3.compute_indexes()
+
+ship4 = Ship(4)
+ship4.row = 3
+ship4.col = 0
+ship4.orientation = "h"
+ship4.indexes = ship4.compute_indexes()
+
+ship5 = Ship(5)
+ship5.row = 4
+ship5.col = 0
+ship5.orientation = "h"
+ship5.indexes = ship5.compute_indexes()
+
+newPlayer = Player()
+newPlayer.ships = [ship1, ship2, ship3, ship4, ship5]
+newPlayer.indexes = []
+for ship in newPlayer.ships:
+    for i in ship.indexes:
+        newPlayer.indexes.append(i)
+game.player1 = newPlayer
+#=============CONSTRUCTION ZONE==============
 
 #this is the main loop of pygame
 running = True
