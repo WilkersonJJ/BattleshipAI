@@ -1,14 +1,14 @@
 from ai import *
 
 #Game Speed
-TICKRATE = 50
+TICKRATE = 0
 
 #these variables here determine if we are doing human vs comper or human vs human
 HUMAN1 = False
 HUMAN2 = False
 
 #Cover the bottom boards
-HIDEBOARD = True
+HIDEBOARD = False
 
 #results file
 RESULTFILE = "result.csv"
@@ -22,8 +22,8 @@ moveType = {"Random": Ai.randomMove,
             "RandomSmartHunt": Ai.randomSmartHuntMove, 
             "Parity": Ai.pairitySmartHuntMove,
             "Heat": Ai.heatMove}
-COMPUTER1 = moveType["Heat"]
-COMPUTER2 = moveType["Random"]
+COMPUTER1 = moveType["Random"]
+COMPUTER2 = moveType["Heat"]
 
 #Variables for board size
 SQUARE_SIZE = 25

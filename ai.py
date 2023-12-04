@@ -156,16 +156,16 @@ class Ai:
         length = sum(self.unsunkOppShips)
         counter = 0
         for config in itertools.product(*unsunkShips):
-            counter += 1
+            #counter += 1
             configSquares = set(itertools.chain.from_iterable(config))
             # If there is an overlap, then the lengths will not match up
-            if counter % 10000000 == 0:
-                print(configSquares)
+            #if counter % 10000000 == 0:
+                #print(configSquares)
             if length == len(configSquares):
                 for square in configSquares:
                     heatMap[square] += 1
                         
-        print(heatMap)
+        #print(heatMap)
 
         highest = max(heatMap)
         bestMoves = [i for i, square in enumerate(heatMap) if square == highest]
