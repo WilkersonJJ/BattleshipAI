@@ -4,7 +4,7 @@ from ai import *
 TICKRATE = 0
 
 #these variables here determine if we are doing human vs comper or human vs human
-HUMAN1 = False
+HUMAN1 = True
 HUMAN2 = False
 
 #Cover the bottom boards
@@ -12,6 +12,7 @@ HIDEBOARD = False
 
 #automatically restart the game on win
 AUTORESTART = True
+NUMOFRUNS = 20
 
 #results file
 RESULTFILE = "result.csv"

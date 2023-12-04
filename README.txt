@@ -18,6 +18,7 @@ COMPUTER1 COMPUTER2 -these two parameters determine which type of AI will be use
                     These are detailed below
 
 AUTORESTART -determines if the game automatically restarts on win. Used to gather data
+NUMOFRUNS -the amount of time to auto restart the game
 
 To Start: python gui.py
 Your ships will be randomly placed

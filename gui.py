@@ -95,7 +95,7 @@ def appendResults(winner, moves, p1, p2, recorded):
 game = Game(HUMAN1, HUMAN2)
 ai1 = Ai(game.player1, COMPUTER1)
 ai2 = Ai(game.player2, COMPUTER2)
-counter = 0
+runCounter = 0
 
 #this is the main loop of pygame
 running = True
@@ -176,13 +176,13 @@ while running:
             SCREEN.blit(textbox, (WIDTH//2 - 250, HEIGHT//4))
             pausing = True
 
-            if AUTORESTART and counter < 50:
+            if AUTORESTART and runCounter < NUMOFRUNS:
                 #make a new game and play infinitely
                 game = Game(HUMAN1, HUMAN2)
                 ai1 = Ai(game.player1, COMPUTER1)
                 ai2 = Ai(game.player2, COMPUTER2)
                 pausing = False
-                counter += 1
+                runCounter += 1
             
         pygame.time.wait(TICKRATE)
         pygame.display.flip()
