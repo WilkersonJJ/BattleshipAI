@@ -18,10 +18,9 @@ COMPUTER1 COMPUTER2 -these two parameters determine which type of AI will be use
                     These are detailed below
 
 AUTORESTART -determines if the game automatically restarts on win. Used to gather data
-NUMOFRUNS -the amount of time to auto restart the game
 
 To Start: python gui.py
-Your ships will be randomly placed
+Yours and your opponent's ships will be randomly placed
 If any HUMAN# is set to True, you may click on the desired spot to fire a missile on your turn
 The spacebar will pause the game, esc will exit the game
 
@@ -35,4 +34,8 @@ RandomSmartHunt: a random AI that will hunt ships on hit using the information a
 Parity: will fire in a random diagonal pattern, and will hunt ships on hit intelligently
 
 Heat: calculates possible ship configurations, then generates a heatmap based on the most likely position
-        Note: the heat ai can sometimes take a long time to run. 
+        Note: Heat AI is experimental and high performance. 
+        It is not recommended to player Human vs Heat AI, since ship placements can often be unlucky 
+        and take upwards of 5 minutes per move. 
+        If you do choose to play against Heat AI, please select your move and be patient, 
+        as it may take some time for the board to update.  

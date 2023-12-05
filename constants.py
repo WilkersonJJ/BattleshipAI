@@ -12,7 +12,6 @@ HIDEBOARD = False
 
 #automatically restart the game on win
 AUTORESTART = False
-NUMOFRUNS = 20
 
 #results file
 RESULTFILE = "result.csv"
