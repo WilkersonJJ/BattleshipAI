@@ -1,6 +1,7 @@
 import random
 from constants import SHIPSIZES
 
+#Ship Class, ship positions are randomly calculated here
 class Ship:
     def __init__(self, size):
         self.row = random.randrange(0,9)
@@ -19,7 +20,7 @@ class Ship:
             return [start_index + i for i in range(self.size)]
         elif self.orientation == "v":
             return [start_index + i*10 for i in range(self.size)]
-        
+#Player Class, holds search grids and ships       
 class Player:
     def __init__(self):
         self.moves = 1
@@ -59,7 +60,8 @@ class Player:
                 if possible == True:
                     self.ships.append(ship)
                     placed = True
-
+                    
+#manages turn taking and moveMove
 class Game:
     def __init__(self, human1, human2):
         self.human1 = human1
@@ -102,7 +104,6 @@ class Game:
 
         #check if the game is over
         self.gameOver = True
-        print("opp indexes", opponent.indexes)
         for i in opponent.indexes:
             if player.search[i] == "U":
                 self.gameOver = False

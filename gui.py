@@ -3,6 +3,8 @@ from engine import *
 from ai import Ai
 from constants import *
 
+#gui.py runs the visuals of the game
+#it creates the board and sends information to engine.py
 pygame.init()
 pygame.font.init()
 pygame.display.set_caption("Battleship")
@@ -19,6 +21,7 @@ recorded = False
 p1Label = ""
 p2Label = ""
 
+#draws the gridlines of the board
 def draw_grid(boardNum):
     left = BUFFER
     top = BUFFER
@@ -34,6 +37,7 @@ def draw_grid(boardNum):
         square = pygame.Rect(x, y, SQUARE_SIZE, SQUARE_SIZE)
         pygame.draw.rect(SCREEN, BOARDCOLOR, square, width = 1)
 
+#updates every space to reflect ifs its hit, miss, sunk, or unsearched
 def draw_missiles(player, left = BUFFER):
     #loop through and update all hits and misses
     #every square has a circle in it, some are just invisible
@@ -41,9 +45,9 @@ def draw_missiles(player, left = BUFFER):
         x = left + i % 10 * SQUARE_SIZE + (SQUARE_SIZE // 2)
         y = BUFFER + i // 10 * SQUARE_SIZE + (SQUARE_SIZE // 2)
         pygame.draw.circle(SCREEN, MISSILECOLORS[player.search[i]], (x, y), radius=SQUARE_SIZE/3)
+        #miss is an outlined circle
         if player.search[i] == "M":
             pygame.draw.circle(SCREEN, BOARDCOLOR, (x, y), radius=SQUARE_SIZE/3, width=2)
-
 
 #the main drawing method for ships
 def draw_ships(player, left = BUFFER, color = PLAYER1COLOR):
@@ -60,6 +64,7 @@ def draw_ships(player, left = BUFFER, color = PLAYER1COLOR):
         rectangle = pygame.Rect(x, y, width, height)
         pygame.draw.rect(SCREEN, color, rectangle, border_radius = 15)
 
+#draws the labels at the top of the board to reflect who is playing
 def draw_labels():
     global p1Label
     global p2Label
@@ -131,7 +136,7 @@ while running:
                 if index >= 0 and index <= 99 and game.player2.search[index] == "U":
                     game.makeMove(index)
 
-        #on keypress
+        #on keypress, either stop or pause the game
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 running = False

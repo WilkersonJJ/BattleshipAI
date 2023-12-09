@@ -1,9 +1,10 @@
 from ai import *
 
 #Game Speed
-TICKRATE = 0
+TICKRATE = 10
 
-#these variables here determine if we are doing human vs comper or human vs human
+#these variables here determine if we are doing human vs computer or human vs human
+#and which player the humans and AI's are
 HUMAN1 = True
 HUMAN2 = False
 
@@ -20,6 +21,9 @@ SHIPSIZES = [5, 4, 3, 3, 2]
 
 #these variables here determine the type of AI used by the computer
 #Options: Ai.pairitySmartHuntMove, Ai.randomMove, Ai.randomHuntMove, Ai.randomSmartHuntMove
+
+#NOTE: heat will take a long time to run. If you click and your move does not show up, be patient. 
+# It may take >5 mins to calculate each move
 moveType = {"Random": Ai.randomMove, 
             "RandomHunt": Ai.randomHuntMove, 
             "RandomSmartHunt": Ai.randomSmartHuntMove, 
@@ -43,7 +47,7 @@ WHITE = (255, 255, 255)
 GREEN = (0, 200, 70)
 BLUE = (0, 50, 200)
 
-#Pink pallete
+#Pink pallete for fun
 BOARDCOLOR = (255, 169, 188)
 PLAYER1COLOR = (251, 111, 146)
 PLAYER2COLOR = (152, 182, 218)
